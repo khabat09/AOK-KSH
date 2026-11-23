@@ -37,6 +37,7 @@
 #import "PasteboardDevice.h"
 #import "URLDevice.h"
 #import "LocationDevice.h"
+#import "MicDevice.h"
 #import "AudioPlayerEngine.h"
 #import "SwapFilePicker.h"
 #import "NSObject+SaneKVO.h"
@@ -4433,6 +4434,28 @@ static TerminalViewController *CreateTerminalViewController(void) {
                                    @"path": @"/dev/dsp"});
     }
     EnsureCharacterDevice("/dev/dsp", S_IFCHR|0666, dev_make(DYN_DEV_MAJOR, DEV_DSP_MINOR));
+
+    // /dev/mic: raw capture. Read-only, and the node says so (0444).
+    //
+    // The title and reason are plain literals, unlike every device above: a new
+    // NSLocalizedString key has to arrive with nine translations in
+    // app/Localizable.xcstrings or tools/check-string-catalogue.py -- which
+    // gates a release tag -- fails, and this alert only appears if registering
+    // the device fails outright (a double registration), which no user should
+    // ever see. Localising it properly means adding the three keys and their
+    // translations in app/Localizable.xcstrings, then wrapping these strings.
+    err = dyn_dev_register((struct dev_ops *) &mic_dev, DEV_CHAR, DYN_DEV_MAJOR, DEV_MIC_MINOR);
+    if (err != 0) {
+        return RecordBootFailure(err,
+                                 @"boot.device.mic.failed",
+                                 @"Boot failed while registering microphone device",
+                                 @"The filesystem was mounted, but AOK-iSH could not register /dev/mic.",
+                                 @"Restart AOK-iSH. If this repeats, open Diagnostics from recovery mode.",
+                                 @{@"root": bootRoot,
+                                   @"guestABI": guestABI ?: @"",
+                                   @"path": @"/dev/mic"});
+    }
+    EnsureCharacterDevice("/dev/mic", S_IFCHR|0444, dev_make(DYN_DEV_MAJOR, DEV_MIC_MINOR));
     
     // Emulate a RTC, read time only
     err = dyn_dev_register(&rtc_dev, DEV_CHAR, DEV_RTC_MAJOR, DEV_RTC_MINOR);

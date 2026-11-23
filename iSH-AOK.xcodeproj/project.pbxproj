@@ -241,6 +241,9 @@
 		BE6DA95A2C0D243E00A7A001 /* MetricKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE6DA9592C0D243E00A7A001 /* MetricKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C0A000012E00000100000001 /* AudioDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A000012E00000100000005 /* AudioDevice.m */; };
 		C0A000012E00000100000002 /* AudioOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A000012E00000100000007 /* AudioOutput.m */; };
+		C0A000012E00000100000050 /* AudioInput.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A000012E00000100000041 /* AudioInput.m */; };
+		C0A000012E00000100000051 /* AudioCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A000012E00000100000043 /* AudioCapture.m */; };
+		C0A000012E00000100000052 /* MicDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A000012E00000100000045 /* MicDevice.m */; };
 		C0A000012E00000100000003 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A000012E00000100000009 /* AudioToolbox.framework */; };
 		C0A000012E00000100000011 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A000012E00000100000010 /* libz.tbd */; };
 		C0A000012E00000100000012 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A000012E00000100000010 /* libz.tbd */; };
@@ -790,6 +793,12 @@
 		C0A000012E00000100000006 /* AudioDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioDevice.h; sourceTree = "<group>"; };
 		C0A000012E00000100000007 /* AudioOutput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioOutput.m; sourceTree = "<group>"; };
 		C0A000012E00000100000008 /* AudioOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioOutput.h; sourceTree = "<group>"; };
+		C0A000012E00000100000040 /* AudioInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioInput.h; sourceTree = "<group>"; };
+		C0A000012E00000100000041 /* AudioInput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioInput.m; sourceTree = "<group>"; };
+		C0A000012E00000100000042 /* AudioCapture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioCapture.h; sourceTree = "<group>"; };
+		C0A000012E00000100000043 /* AudioCapture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioCapture.m; sourceTree = "<group>"; };
+		C0A000012E00000100000044 /* MicDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicDevice.h; sourceTree = "<group>"; };
+		C0A000012E00000100000045 /* MicDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MicDevice.m; sourceTree = "<group>"; };
 		C0A000012E00000100000009 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C0A000012E00000100000010 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C0A000012E00000100000020 /* libcompression.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcompression.tbd; path = usr/lib/libcompression.tbd; sourceTree = SDKROOT; };
@@ -1045,6 +1054,12 @@
 				C0A000012E00000100000005 /* AudioDevice.m */,
 				C0A000012E00000100000008 /* AudioOutput.h */,
 				C0A000012E00000100000007 /* AudioOutput.m */,
+				C0A000012E00000100000040 /* AudioInput.h */,
+				C0A000012E00000100000041 /* AudioInput.m */,
+				C0A000012E00000100000042 /* AudioCapture.h */,
+				C0A000012E00000100000043 /* AudioCapture.m */,
+				C0A000012E00000100000044 /* MicDevice.h */,
+				C0A000012E00000100000045 /* MicDevice.m */,
 				650B337222EA235C00B4C03E /* PasteboardDevice.h */,
 				650B337322EA235C00B4C03E /* PasteboardDevice.m */,
 				AA02URLDEV0000000000BB02 /* URLDevice.m */,
@@ -2222,6 +2237,9 @@
 				C0A200042F2F000100000003 /* ISHRunCommandIntent.swift in Sources */,
 				C0A000012E00000100000001 /* AudioDevice.m in Sources */,
 				C0A000012E00000100000002 /* AudioOutput.m in Sources */,
+				C0A000012E00000100000050 /* AudioInput.m in Sources */,
+				C0A000012E00000100000051 /* AudioCapture.m in Sources */,
+				C0A000012E00000100000052 /* MicDevice.m in Sources */,
 				5DA0A8342AAE21D000397280 /* BatteryStatus.m in Sources */,
 				5D8CFA852B1198B300D50E57 /* RTCDevice.m in Sources */,
 				5DD383EB2AAE33330013A847 /* UIDevice.m in Sources */,
