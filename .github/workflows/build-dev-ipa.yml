@@ -25,7 +25,12 @@ jobs:
     # dev IPAs. That is the whole point: the failure mode being prevented is the
     # tree landing in a DIFFERENTLY NAMED repo, which a fork is not. The trailing
     # slash matters, it stops `owner/not-ish-AOK` from matching.
-    if: endsWith(github.repository, '/ish-AOK')
+    #
+    # AOK-KSH is this tree under a renamed fork, so it is allowed by name too.
+    # Listed explicitly rather than loosened to a substring or an owner match: a
+    # repo renamed away from these two names still stops publishing AOK-iSH
+    # builds, which is what the guard is for.
+    if: endsWith(github.repository, '/ish-AOK') || endsWith(github.repository, '/AOK-KSH')
     runs-on: macos-15
     timeout-minutes: 90
     steps:
