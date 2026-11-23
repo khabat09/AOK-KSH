@@ -71,5 +71,7 @@
 #define DEV_DSP_MINOR 3
 // /dev/url
 #define DEV_URL_MINOR 4
+// /dev/mic
+#define DEV_MIC_MINOR 5
 
 #endif

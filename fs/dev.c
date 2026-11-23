@@ -210,6 +210,10 @@ const struct dev_node_spec dev_dynamic_nodes[] = {
     {"location",  0666, DYN_DEV_MAJOR, DEV_LOCATION_MINOR},
     {"dsp",       0666, DYN_DEV_MAJOR, DEV_DSP_MINOR},
     {"url",       0666, DYN_DEV_MAJOR, DEV_URL_MINOR},
+    // 0444 rather than the 0666 the others carry: this node is read-only by
+    // construction (no ->write, so a write is EBADF), and 0444 is what /dev
+    // publishes for a capture node whose only operation is read.
+    {"mic",       0444, DYN_DEV_MAJOR, DEV_MIC_MINOR},
 };
 const size_t dev_dynamic_nodes_count = sizeof(dev_dynamic_nodes)/sizeof(dev_dynamic_nodes[0]);
 

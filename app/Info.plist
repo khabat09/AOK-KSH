@@ -92,6 +92,8 @@
 	<string>Programs running in AOK-iSH will be allowed to track your location in the background.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Programs running in AOK-iSH will be allowed to see your location.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Programs running in AOK-iSH can record audio from the microphone when you read /dev/mic.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>AOK-iSH deletes a video from your library only when you choose Delete Original in the Video Converter.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
