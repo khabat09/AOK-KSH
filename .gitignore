@@ -52,7 +52,6 @@ Devuan5(Debian12) 2.tar.gz
 .cursor/
 .gemini/
 .windsurfrules
-AGENTS.md
 opencode.json
 
 # Xcode drops its plugin/spec caches here when CACHE_ROOT resolves relative to
