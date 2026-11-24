@@ -178,7 +178,7 @@ leaves the saved default alone:
 
 ```sh
 xcrun devicectl device process launch -e '{"ISH_BOOT_ROOT":"Alpine3.24.2-aarch64"}' \
-    --terminate-existing app.ish.iSH-AOK
+    --terminate-existing app.ish.aok-ksh
 ```
 
 That is for driving a device from a Mac — a release's device leg boots each

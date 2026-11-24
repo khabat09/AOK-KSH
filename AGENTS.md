@@ -644,7 +644,7 @@ The published IPAs are built unsigned (`CODE_SIGNING_ALLOWED=NO`) and re-signed
 by users with AltStore/SideStore/Sideloadly. A re-signer decides what to ask
 Apple for by reading the entitlements of the bundle it re-signs:
 
-- **Always run `tools/adhoc-sign-app.sh <path/to/iSH-AOK.app>` before packaging
+- **Always run `tools/adhoc-sign-app.sh <path/to/AOK-KSH.app>` before packaging
   an unsigned build.** Without it the bundle has no entitlements blob, the
   re-signer signs with no App Group, iOS grants no shared container, and the
   app falls into its private `AppGroupFallback` — the app works but Files
@@ -671,11 +671,14 @@ Apple for by reading the entitlements of the bundle it re-signs:
   plist alphabetically and drops XML comments; the explanation has already been
   lost that way once.
 - **App identity** is centralized in `app/iSH.xcconfig`: `ROOT_BUNDLE_IDENTIFIER`
-  (`app.ish.iSH-AOK`) drives every bundle id and the app group
-  (`group.app.ish.iSH-AOK`); `DEVELOPMENT_TEAM` (`UYU5FM4LQ4`) is upstream's and
-  must change for your own signing. Some entitlements files hardcode the group
-  name rather than `$(PRODUCT_APP_GROUP_IDENTIFIER)` — a bundle-id change must
-  rewrite them.
+  (`app.ish.aok-ksh`) drives every bundle id, the app group
+  (`group.app.ish.aok-ksh`) and the File Provider domain; `DEVELOPMENT_TEAM`
+  (`UYU5FM4LQ4`) is upstream's and must change for your own signing. The two
+  shipping targets read it as `$(ROOT_BUNDLE_IDENTIFIER)` rather than keeping
+  their own copy, and the entitlements files take the group from
+  `$(PRODUCT_APP_GROUP_IDENTIFIER)`. The root is deliberately **not** iSH-AOK's
+  `app.ish.iSH-AOK`: that is what makes this a separate app with its own
+  container that installs beside iSH-AOK, so do not "fix" it back.
 - **`MARKETING_VERSION` (the user-visible 1.x) and `CURRENT_PROJECT_VERSION`
   (the build number) are separate**; the routine release bump touches only the
   build number.

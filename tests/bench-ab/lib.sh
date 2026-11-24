@@ -37,9 +37,9 @@ battery_ok() {
 
 install_and_launch() { # <build>
     install_lock
-    xcrun devicectl device install app --device $udid "$SP/app-$1/iSH-AOK.app" >> "$log" 2>&1
+    xcrun devicectl device install app --device $udid "$SP/app-$1/AOK-KSH.app" >> "$log" 2>&1
     install_unlock
-    xcrun devicectl device process launch --device $udid --terminate-existing --environment-variables '{"ISH_SESSION_RESUME":"fresh"}' app.ish.iSH-AOK >> "$log" 2>&1
+    xcrun devicectl device process launch --device $udid --terminate-existing --environment-variables '{"ISH_SESSION_RESUME":"fresh"}' app.ish.aok-ksh >> "$log" 2>&1
     n=0; until s true 2>/dev/null || [ $n -ge 60 ]; do sleep 10; n=$((n+1)); done
     if ! s true 2>/dev/null; then
         echo "REFUSED: the guest on $udid did not come up after launching $1 (locked? wedged?): stopping" | tee -a "$log" >&2

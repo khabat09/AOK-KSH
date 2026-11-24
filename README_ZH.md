@@ -13,8 +13,8 @@ AOK VM，姊妹应用（完整的虚拟机：基于 QEMU 与 AOK gadget 引擎�
 ## 本分支新增的内容
 
 - 分支专属的应用标识:
-  - 产品名 `AOK-iSH`
-  - Bundle root `app.ish.iSH-AOK`
+  - 产品名 `AOK-KSH`
+  - Bundle root `app.ish.aok-ksh`
 - **五种客户机架构**，全部基于 JIT：`i386`、`amd64`（x86_64）、`arm64`（aarch64）、`riscv64` 和 `ppc64le`（64 位小端 PowerPC）。
 - **原生程序**：zsh、dash（预配置脚本会让它成为 `sh`），以及携带 OpenSSH（`ssh`、`scp`、`sftp`、`ssh-keygen`、`ssh-copy-id`）、Nextvi 编辑器和与 GNU 兼容的 `sed`、`grep`、`find`、`ls`、`tar`、`gzip`、`diff`、`awk` 及大部分 coreutils 的 SmallCLUE busybox 风格工具箱，都作为宿主代码编译进应用，并由客户机的 `execve` 经 `/AOK/native/<名称>` 分发。它们是运行在客户机任务线程上的宿主函数，而不是客户机二进制，因此以全速运行，无需逐条指令翻译。bash 拥有同样的原生实现，但自 556 起发布的构建不再包含它——参见[原生 bash 与许可证](#原生-bash-与许可证)。
 - **原生模式**（558）：完全没有 Linux 发行版的根文件系统。它的 `/bin` 和 `/usr/bin` 就是原生程序——约 140 个日常命令、ssh、git、curl、编辑器——由 SmallCLUE 的 `init` 作为 pid 1 运行 runit 式的服务，登录 shell 是原生 zsh。无需下载任何东西：在“官方发行版”下选择 **AOK-iSH Native** 即可。需要包管理器时，在它旁边再安装一个发行版。参见 `/AOK/docs/native-mode.md`。
@@ -177,7 +177,7 @@ brew install meson ninja llvm libarchive
 分支专属的重要设置：
 
 - Bundle ID 由 [app/iSH.xcconfig](app/iSH.xcconfig) 决定。
-- `ROOT_BUNDLE_IDENTIFIER` 默认为 `app.ish.iSH-AOK`。
+- `ROOT_BUNDLE_IDENTIFIER` 默认为 `app.ish.aok-ksh`。
 - 项目使用分支专属的调试配置 `Debug-ApplePleaseFixFB19282108`。
 
 面向真机的命令行构建：

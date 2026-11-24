@@ -2,7 +2,7 @@
 # abn.sh <name> <udid> <rounds> <ssh host> "<arch:root> ..." <build>...
 #
 # ab.sh for any number of builds: each round installs and runs every build in
-# turn ($SP/app-<build>/iSH-AOK.app), so one device run can tell several
+# turn ($SP/app-<build>/AOK-KSH.app), so one device run can tell several
 # changes apart. That is what it is for: on 2026-10-11 three small gadget
 # changes measured together came out 2.5% slower on the M4, and it took one
 # build each to find that one of them cost 4% and the others were worth having.

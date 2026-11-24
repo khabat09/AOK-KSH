@@ -76,11 +76,11 @@
 #import <os/lock.h>
 #include "platform/platform.h"
 
-// Visible in Console.app with subsystem app.ish.iSH-AOK, category suspend.
+// Visible in Console.app with subsystem app.ish.aok-ksh, category suspend.
 static os_log_t ISHSuspendLog(void) {
     static os_log_t log;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{ log = os_log_create("app.ish.iSH-AOK", "suspend"); });
+    dispatch_once(&onceToken, ^{ log = os_log_create("app.ish.aok-ksh", "suspend"); });
     return log;
 }
 
@@ -2259,7 +2259,7 @@ static NSURL *AOKSharedFakefsDirectoryURL(void) {
     static dispatch_queue_t queue;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        queue = dispatch_queue_create("app.ish.iSH-AOK.Diagnostics", DISPATCH_QUEUE_SERIAL);
+        queue = dispatch_queue_create("app.ish.aok-ksh.Diagnostics", DISPATCH_QUEUE_SERIAL);
     });
     return queue;
 }
@@ -5198,7 +5198,7 @@ static TerminalViewController *CreateTerminalViewController(void) {
         return YES;
 
     if (self.localDnsServerQueue == nil)
-        self.localDnsServerQueue = dispatch_queue_create("app.ish.iSH-AOK.local-dns", DISPATCH_QUEUE_SERIAL);
+        self.localDnsServerQueue = dispatch_queue_create("app.ish.aok-ksh.local-dns", DISPATCH_QUEUE_SERIAL);
 
     int fd = socket(AF_INET, SOCK_DGRAM, 0);
     if (fd < 0)
@@ -5272,7 +5272,7 @@ static TerminalViewController *CreateTerminalViewController(void) {
         if (self.pathMonitor == nil) {
             self.pathMonitor = nw_path_monitor_create();
             if (self.pathMonitorQueue == nil)
-                self.pathMonitorQueue = dispatch_queue_create("app.ish.iSH-AOK.dns-monitor", DISPATCH_QUEUE_SERIAL);
+                self.pathMonitorQueue = dispatch_queue_create("app.ish.aok-ksh.dns-monitor", DISPATCH_QUEUE_SERIAL);
             __weak typeof(self) weakSelf = self;
             nw_path_monitor_set_update_handler(self.pathMonitor, ^(nw_path_t path) {
                 __strong typeof(weakSelf) self = weakSelf;

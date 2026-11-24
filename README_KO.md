@@ -14,8 +14,8 @@ AOK VM, 자매 앱(완전한 가상 머신: QEMU 와 AOK gadget 엔진으로 만
 ## 이 포크가 추가한 것
 
 - 포크 전용 앱 아이덴티티:
-  - 제품명 `AOK-iSH`
-  - 번들 루트 `app.ish.iSH-AOK`
+  - 제품명 `AOK-KSH`
+  - 번들 루트 `app.ish.aok-ksh`
 - **다섯 가지 게스트 아키텍처**, 모두 JIT 기반: `i386`, `amd64`(x86_64), `arm64`(aarch64), `riscv64`, `ppc64le`(64비트 리틀 엔디언 PowerPC).
 - **네이티브 프로그램**: zsh, dash(프로비저닝이 이를 `sh` 로 만듭니다), 그리고 OpenSSH(`ssh`, `scp`, `sftp`, `ssh-keygen`, `ssh-copy-id`), Nextvi 편집기, GNU 호환 `sed`, `grep`, `find`, `ls`, `tar`, `gzip`, `diff`, `awk` 및 coreutils 대부분을 품고 있는 SmallCLUE 의 busybox 스타일 도구 모음이 호스트 코드로 앱에 컴파일되어 들어가며, 게스트의 `execve` 에서 `/AOK/native/<이름>` 을 통해 디스패치됩니다. 이들은 게스트 바이너리가 아니라 게스트 태스크 스레드 위에서 도는 호스트 함수이므로, 명령어 단위로 변환되지 않고 전속력으로 실행됩니다. bash 도 동일한 네이티브 구현이 있지만, 배포되는 빌드에는 556 부터 포함되지 않습니다 — [네이티브 bash와 라이선스](#네이티브-bash와-라이선스) 참고.
 - **네이티브 모드**(558): 리눅스 배포판이 전혀 없는 루트입니다. `/bin` 과 `/usr/bin` 은 네이티브 프로그램들 — 일상 명령 약 140개, ssh, git, curl, 편집기 — 이고, SmallCLUE 의 `init` 이 pid 1 로서 runit 방식의 서비스를 돌리며, 로그인 셸은 네이티브 zsh 입니다. 아무것도 내려받지 않습니다: 공식 배포판 아래에서 **AOK-iSH Native** 를 고르면 됩니다. 패키지 관리자가 필요하면 배포판을 그 옆에 설치하십시오. `/AOK/docs/native-mode.md` 참고.
@@ -187,7 +187,7 @@ Apple Silicon에서는 빌드가 `llvm`, `libarchive`, `unicorn`을 `/usr/local`
 포크 전용 설정 중 중요한 것:
 
 - 번들 ID는 [app/iSH.xcconfig](app/iSH.xcconfig)에서 결정됩니다.
-- `ROOT_BUNDLE_IDENTIFIER`의 기본값은 `app.ish.iSH-AOK`입니다.
+- `ROOT_BUNDLE_IDENTIFIER`의 기본값은 `app.ish.aok-ksh`입니다.
 - 프로젝트는 포크 전용 디버그 구성인 `Debug-ApplePleaseFixFB19282108`을 사용합니다.
 
 기기용 커맨드라인 빌드:

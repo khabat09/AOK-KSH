@@ -11,8 +11,8 @@ This fork is not just a rebrand. It carries fork-specific behavior, bundled root
 ## What This Fork Adds
 
 - Fork-specific app identity:
-  - product name `AOK-iSH`
-  - bundle root `app.ish.iSH-AOK`
+  - product name `AOK-KSH`
+  - bundle root `app.ish.aok-ksh`, distinct from iSH-AOK's `app.ish.iSH-AOK` so both install side by side
 - **Five guest architectures**, all JIT: `i386`, `amd64` (x86_64), `arm64` (aarch64), `riscv64`, and `ppc64le` (64-bit little-endian PowerPC).
 - **Native programs**: zsh, dash (which provisioning makes `sh`) and SmallCLUE's busybox-style toolbox — which carries OpenSSH (`ssh`, `scp`, `sftp`, `ssh-keygen`, `ssh-copy-id`), the Nextvi editor, and GNU-compatible `sed`, `grep`, `find`, `ls`, `tar`, `gzip`, `diff`, `awk` and most of coreutils — are compiled into the app as host code and dispatched from guest `execve` through `/AOK/native/<name>`. They are host functions on a guest task's thread, not guest binaries, so they run at full speed instead of being translated instruction by instruction. bash has the same native implementation, but the shipped build has not included it since 556 — see [Native bash and licensing](#native-bash-and-licensing).
 - **Native mode** (558): a root with no Linux distribution at all. Its `/bin` and `/usr/bin` are the native programs — about 140 everyday commands, ssh, git, curl, editors — with SmallCLUE's `init` as pid 1, runit-style services, and native zsh as the login shell. Nothing is downloaded: pick **AOK-iSH Native** under Official Distributions. Install a distribution beside it when you need a package manager. See `/AOK/docs/native-mode.md`.
@@ -187,7 +187,7 @@ Open [iSH-AOK.xcodeproj](iSH-AOK.xcodeproj) in Xcode and build the `iSH-AOK` sch
 Important fork-specific settings:
 
 - Bundle IDs are driven by [app/iSH.xcconfig](app/iSH.xcconfig).
-- `ROOT_BUNDLE_IDENTIFIER` defaults to `app.ish.iSH-AOK`.
+- `ROOT_BUNDLE_IDENTIFIER` defaults to `app.ish.aok-ksh`.
 - The project uses the fork-specific debug configuration `Debug-ApplePleaseFixFB19282108`.
 
 Command-line build for a device:

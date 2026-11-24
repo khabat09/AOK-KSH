@@ -10,7 +10,7 @@
 
 NSString *const kISHLLMKeychainActiveAccount = @"active";
 
-static NSString *const kISHLLMKeychainService = @"app.ish.iSH-AOK.llm-api-key";
+static NSString *const kISHLLMKeychainService = @"app.ish.aok-ksh.llm-api-key";
 
 NSString *ISHLLMKeychainDestinationAccount(NSString *destinationID) {
     return [@"destination:" stringByAppendingString:destinationID ?: @""];

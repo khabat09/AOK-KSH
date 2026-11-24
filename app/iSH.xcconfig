@@ -1,5 +1,11 @@
-// Change this to change all the bundle IDs and app groups
-ROOT_BUNDLE_IDENTIFIER = app.ish.iSH-AOK
+// Change this to change all the bundle IDs and app groups.
+//
+// Deliberately not upstream AOK-iSH's `app.ish.iSH-AOK`. Every bundle id, the
+// app group and the File Provider domain are derived from this one string, so
+// a distinct root is what makes this a separate app rather than an upgrade of
+// iSH-AOK: its own container, its own data, its own icon, and both can be
+// installed on the same device.
+ROOT_BUNDLE_IDENTIFIER = app.ish.aok-ksh
 // It's easiest to specify your development team ID in the project build settings, but you can alternatively put it here to reduce merge conflicts
 DEVELOPMENT_TEAM = UYU5FM4LQ4
 

@@ -77,7 +77,7 @@ static inline void ISHFileProviderRemoveRegisteredDomains(BOOL (^_Nullable liste
         if (listed != nil && !listed(summary.copy))
             return;
 
-        dispatch_queue_t queue = dispatch_queue_create("app.ish.iSH-AOK.FileProviderDomainCleanup", DISPATCH_QUEUE_SERIAL);
+        dispatch_queue_t queue = dispatch_queue_create("app.ish.aok-ksh.FileProviderDomainCleanup", DISPATCH_QUEUE_SERIAL);
         dispatch_group_t group = dispatch_group_create();
         void (^plainRemove)(NSFileProviderDomain *) = ^(NSFileProviderDomain *domain) {
             [NSFileProviderManager removeDomain:domain completionHandler:^(NSError *removeError) {

@@ -96,16 +96,16 @@ jobs:
       # re-signs -- so it signed AOK with no App Group and the app booted with
       # nowhere to store a filesystem. See tools/adhoc-sign-app.sh.
       - name: Embed entitlements (ad-hoc signature)
-        run: ./tools/adhoc-sign-app.sh build/Build/Products/Release-iphoneos/iSH-AOK.app
+        run: ./tools/adhoc-sign-app.sh build/Build/Products/Release-iphoneos/AOK-KSH.app
 
       - name: Package IPA
         id: package
         run: |
           set -euo pipefail
-          APP_PATH="build/Build/Products/Release-iphoneos/iSH-AOK.app"
+          APP_PATH="build/Build/Products/Release-iphoneos/AOK-KSH.app"
           test -d "$APP_PATH"
           SHORT_SHA=$(git rev-parse --short HEAD)
-          IPA_NAME="iSH-AOK-dev-${SHORT_SHA}.ipa"
+          IPA_NAME="AOK-KSH-dev-${SHORT_SHA}.ipa"
           mkdir Payload
           cp -r "$APP_PATH" Payload/
           zip -qr "$IPA_NAME" Payload

@@ -132,7 +132,7 @@ which is why this outline is worth trusting:
   reporting a stub syscall. The fork's temperament is visible in that second one:
   make the failure say who caused it.
 - What "AOK" came to mean: a fork with its own product identity
-  (`app.ish.iSH-AOK`), its own TestFlight, its own release cadence, and its own
+  (`app.ish.aok-ksh`), its own TestFlight, its own release cadence, and its own
   README because upstream's instructions stopped being true here.
 - The divergence inventory, as of build 551: four guest architectures, native
   programs, `/AOK`, bundled and downloadable roots, File Provider, FUSE,

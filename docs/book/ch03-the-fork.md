@@ -83,7 +83,7 @@ than what it replaces, stated as such.
 ## 3.4 What "AOK" came to mean
 
 Somewhere in this period the fork stopped being a patch set and became a
-product: its own name, its own bundle identifier (`app.ish.iSH-AOK`), its own
+product: its own name, its own bundle identifier (`app.ish.aok-ksh`), its own
 TestFlight, its own release numbering — already in the 500s by the end of 2023 —
 and eventually its own README, because upstream's had stopped being true here.
 

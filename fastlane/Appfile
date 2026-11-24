@@ -1,4 +1,4 @@
-app_identifier "app.ish.iSH-AOK" # The bundle identifier of your app
+app_identifier "app.ish.aok-ksh" # The bundle identifier of your app
 apple_id "emkey1@gmail.com" # Your Apple email address
 
 team_id "UYU5FM4LQ4" # Developer Portal Team ID
