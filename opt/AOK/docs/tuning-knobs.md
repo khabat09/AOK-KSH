@@ -156,7 +156,7 @@ root in turn:
 
 ```sh
 xcrun devicectl device process launch -e '{"ISH_BOOT_ROOT":"Alpine3.24.2-aarch64"}' \
-    --terminate-existing app.ish.iSH-AOK
+    --terminate-existing app.ish.aok-ksh
 ```
 
 A name that is not an installed root fails the boot by name, listing the ones

@@ -332,9 +332,14 @@ yes or no.
 If the answer is no, the knock-on work is larger than renaming a string: the
 store name, the subtitle and keywords in
 [app_store_metadata.md](app_store_metadata.md), the icon's ISH badge, and the
-first line of the description. The **bundle id stays** regardless — changing
-`app.ish.iSH-AOK` would be a new app record and would strand every TestFlight
-install. A bundle id is not a public name, so 5.2.1 does not reach it.
+first line of the description. A bundle id is not a public name, so 5.2.1 does
+not reach it.
+
+This fork now ships under its own root, `app.ish.aok-ksh` (see
+`app/iSH.xcconfig`), which is deliberately **not** iSH-AOK's `app.ish.iSH-AOK`.
+That is a new App Store record and it strands nothing, because it is the point:
+AOK-KSH installs beside iSH-AOK as a separate app, with its own container, app
+group and TestFlight train rather than an upgrade of it.
 
 The `ish` binary, `libish.a`, `ISH_*` and `ish_printk` also stay: they are
 identifiers, not branding (see CLAUDE.md).

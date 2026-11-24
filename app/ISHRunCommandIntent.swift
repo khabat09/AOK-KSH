@@ -108,7 +108,7 @@ enum ISHRunCommandError: Error, CustomLocalizedStringResourceConvertible {
     // a Japanese iPad while the same action's title, summary and parameters --
     // which travel in Metadata.appintents and are localized by whoever shows
     // them -- were translated. Naming a bundle does not help: the lookup was
-    // already landing in iSH-AOK.app, just under en.lproj.
+    // already landing in AOK-KSH.app, just under en.lproj.
     //
     // Keep the English written out inside each String(localized:) call. The
     // compiler extracts the catalogue keys from those literals, so folding

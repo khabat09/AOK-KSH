@@ -38,7 +38,7 @@ static NSNumber *ISHFileProviderEnumeratorDurationMilliseconds(NSTimeInterval st
 - (void)enumerateItemsForObserver:(id<NSFileProviderEnumerationObserver>)observer startingAtPage:(NSFileProviderPage)page {
     NSLog(@"enumeration start %@", self.item.itemIdentifier);
     NSString *containerIdentifier = self.item.itemIdentifier ?: @"working-set";
-    NSString *domainIdentifier = self.item.mountOwner.rootName ?: @"iSH-AOK";
+    NSString *domainIdentifier = self.item.mountOwner.rootName ?: @"app.ish.aok-ksh";
     ISHFileProviderRecordBreadcrumb(@"fileprovider.enumerate.begin",
                                     @{@"container": containerIdentifier,
                                       @"domain": domainIdentifier});

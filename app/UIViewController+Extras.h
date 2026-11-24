@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 //
 // Debug override: ISH_FORCE_MAC_SHEETS=1 in the environment takes the Mac path
 // on iPhone and iPad too, so the list can be tested in the simulator:
-//     SIMCTL_CHILD_ISH_FORCE_MAC_SHEETS=1 xcrun simctl launch <device> app.ish.iSH-AOK
+//     SIMCTL_CHILD_ISH_FORCE_MAC_SHEETS=1 xcrun simctl launch <device> app.ish.aok-ksh
 @interface ISHActionSheet : NSObject
 
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message;

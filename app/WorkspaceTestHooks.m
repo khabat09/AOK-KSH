@@ -10,7 +10,7 @@
 //
 //  The channel is a directory and a Darwin notification. The harness writes
 //  one command line to <app data>/tmp/workspace-test/cmd.txt, then posts
-//  "app.ish.iSH-AOK.workspace-test" (simctl spawn ... notifyutil -p). The app
+//  "app.ish.aok-ksh.workspace-test" (simctl spawn ... notifyutil -p). The app
 //  answers in result-<seq>.json beside it. A command line is
 //  "<seq> <verb> [args...]"; windows are named by the "id" a dump gave them,
 //  which lasts for this run only -- after a relaunch the harness finds a
@@ -89,7 +89,7 @@
 - (NSString *)roleForTab:(TerminalViewController *)tab;
 @end
 
-static NSString *const ISHWorkspaceTestNotification = @"app.ish.iSH-AOK.workspace-test";
+static NSString *const ISHWorkspaceTestNotification = @"app.ish.aok-ksh.workspace-test";
 static const void *ISHWorkspaceTestIdKey = &ISHWorkspaceTestIdKey;
 static NSInteger ISHWorkspaceTestNextId = 1;
 

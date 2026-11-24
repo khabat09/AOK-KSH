@@ -3,7 +3,7 @@
 #
 # Alternates two app builds on one device -- $A then $B, <rounds> times -- and
 # runs bench.sh in each, so slow drift (heat, background work) lands on both
-# builds alike. The apps are $SP/app-$A/iSH-AOK.app and $SP/app-$B/iSH-AOK.app
+# builds alike. The apps are $SP/app-$A/AOK-KSH.app and $SP/app-$B/AOK-KSH.app
 # (SP defaults to this script's directory; A and B to 557 and 558). Installs are
 # serialised across concurrent ab.sh runs by $SP/install.lock: one hung
 # `devicectl device install` can wedge CoreDevice for every device. Each launch
@@ -25,9 +25,9 @@ for r in $(seq 1 $rounds); do
     # one install at a time across devices
     until mkdir $SP/install.lock 2>/dev/null; do sleep 5; done
     echo "$(date +%T) round $r build $b: install" >> $log
-    xcrun devicectl device install app --device $udid $SP/app-$b/iSH-AOK.app >> $log 2>&1
+    xcrun devicectl device install app --device $udid $SP/app-$b/AOK-KSH.app >> $log 2>&1
     rmdir $SP/install.lock
-    xcrun devicectl device process launch --device $udid --terminate-existing --environment-variables '{"ISH_SESSION_RESUME":"fresh"}' app.ish.iSH-AOK >> $log 2>&1
+    xcrun devicectl device process launch --device $udid --terminate-existing --environment-variables '{"ISH_SESSION_RESUME":"fresh"}' app.ish.aok-ksh >> $log 2>&1
     n=0; until s true 2>/dev/null || [ $n -ge 60 ]; do sleep 10; n=$((n+1)); done
     sleep 20   # let the boot's own work settle
     echo "$(date +%T) round $r build $b: $(s 'dmesg | grep -m1 -o "built [A-Z][a-z]* [0-9]* [0-9]* [0-9:]*"')" >> $log

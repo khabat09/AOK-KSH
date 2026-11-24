@@ -10,11 +10,11 @@
 
 // The same subsystem and category AppDelegate's suspend logging uses, so a
 // window's session decision reads in one stream with the resume that preceded
-// it. Console.app: subsystem app.ish.iSH-AOK, category suspend.
+// it. Console.app: subsystem app.ish.aok-ksh, category suspend.
 static os_log_t ISHSuspendLog(void) {
     static os_log_t log;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{ log = os_log_create("app.ish.iSH-AOK", "suspend"); });
+    dispatch_once(&onceToken, ^{ log = os_log_create("app.ish.aok-ksh", "suspend"); });
     return log;
 }
 #import "AppDelegate.h"

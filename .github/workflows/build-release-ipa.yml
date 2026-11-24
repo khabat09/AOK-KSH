@@ -152,7 +152,7 @@ jobs:
       - name: Embed entitlements (ad-hoc signature)
         run: |
           set -eu
-          APP_PATH="build/Build/Products/Release-iphoneos/iSH-AOK.app"
+          APP_PATH="build/Build/Products/Release-iphoneos/AOK-KSH.app"
           if [ -x tools/adhoc-sign-app.sh ]; then
             ./tools/adhoc-sign-app.sh "$APP_PATH"
           else
@@ -163,11 +163,11 @@ jobs:
         id: package
         run: |
           set -euo pipefail
-          APP_PATH="build/Build/Products/Release-iphoneos/iSH-AOK.app"
+          APP_PATH="build/Build/Products/Release-iphoneos/AOK-KSH.app"
           test -d "$APP_PATH"
           TAG="${{ github.event.inputs.tag || github.ref_name }}"
           BUILD_N="${TAG##*_}"
-          IPA_NAME="iSH-AOK-${BUILD_N}.ipa"
+          IPA_NAME="AOK-KSH-${BUILD_N}.ipa"
           mkdir Payload
           cp -r "$APP_PATH" Payload/
           zip -qr "$IPA_NAME" Payload

@@ -22,13 +22,13 @@
 // mount open/close pair is the part worth being able to see from the outside
 // (it is what decides whether a database is still open at suspension, which is
 // what RunningBoard kills with 0xdead10cc), and both are rare enough to log
-// unconditionally. Visible in Console.app with subsystem app.ish.iSH-AOK,
+// unconditionally. Visible in Console.app with subsystem app.ish.aok-ksh,
 // category fileprovider.
 os_log_t ISHFileProviderLog(void) {
     static os_log_t log;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        log = os_log_create("app.ish.iSH-AOK", "fileprovider");
+        log = os_log_create("app.ish.aok-ksh", "fileprovider");
     });
     return log;
 }
@@ -66,7 +66,7 @@ static dispatch_queue_t ISHFileProviderBreadcrumbQueue(void) {
     static dispatch_queue_t queue;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        queue = dispatch_queue_create("app.ish.iSH-AOK.FileProvider.Diagnostics", DISPATCH_QUEUE_SERIAL);
+        queue = dispatch_queue_create("app.ish.aok-ksh.FileProvider.Diagnostics", DISPATCH_QUEUE_SERIAL);
     });
     return queue;
 }

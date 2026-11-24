@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BB792B4F1F96D90D00FFB7A4"
-               BuildableName = "iSH-AOK.app"
+               BuildableName = "AOK-KSH.app"
                BlueprintName = "iSH-AOK"
                ReferencedContainer = "container:iSH-AOK.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BB792B4F1F96D90D00FFB7A4"
-            BuildableName = "iSH-AOK.app"
+            BuildableName = "AOK-KSH.app"
             BlueprintName = "iSH-AOK"
             ReferencedContainer = "container:iSH-AOK.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BB792B4F1F96D90D00FFB7A4"
-            BuildableName = "iSH-AOK.app"
+            BuildableName = "AOK-KSH.app"
             BlueprintName = "iSH-AOK"
             ReferencedContainer = "container:iSH-AOK.xcodeproj">
          </BuildableReference>
@@ -121,7 +121,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BB792B4F1F96D90D00FFB7A4"
-            BuildableName = "iSH-AOK.app"
+            BuildableName = "AOK-KSH.app"
             BlueprintName = "iSH-AOK"
             ReferencedContainer = "container:iSH-AOK.xcodeproj">
          </BuildableReference>

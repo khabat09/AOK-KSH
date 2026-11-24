@@ -19,13 +19,13 @@ lane :build do |options|
         path: PROJECT_PATH,
         targets: APP_TARGET,
         use_automatic_signing: false,
-        profile_uuid: ENV["sigh_app.ish.iSH-AOK_development"],
+        profile_uuid: ENV["sigh_app.ish.aok-ksh_development"],
       )
       update_code_signing_settings(
         path: PROJECT_PATH,
         targets: FILE_PROVIDER_TARGET,
         use_automatic_signing: false,
-        profile_uuid: ENV["sigh_app.ish.iSH-AOK.FileProvider_development"],
+        profile_uuid: ENV["sigh_app.ish.aok-ksh.FileProvider_development"],
       )
     end
 
@@ -85,7 +85,7 @@ lane :upload_build do
         name: "Build #{build_number}",
         description: changelog,
         is_prerelease: true,
-        upload_assets: ["iSH-AOK.ipa", "iSH-AOK.app.dSYM.zip", "iSH-AOK-appstore.app.dSYM.zip"],
+        upload_assets: ["iSH-AOK.ipa", "AOK-KSH.app.dSYM.zip", "iSH-AOK-appstore.app.dSYM.zip"],
         api_token: ENV["GH_TOKEN"],
     )
 end

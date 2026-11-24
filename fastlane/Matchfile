@@ -1,2 +1,2 @@
 git_url(ENV.fetch("MATCH_GIT_URL"))
-app_identifier(["app.ish.iSH-AOK", "app.ish.iSH-AOK.FileProvider"])
+app_identifier(["app.ish.aok-ksh", "app.ish.aok-ksh.FileProvider"])

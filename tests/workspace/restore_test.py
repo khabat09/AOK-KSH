@@ -16,7 +16,7 @@ It drives the app through app/WorkspaceTestHooks.m, which is inert unless the
 app is launched with ISH_WORKSPACE_TEST=1 -- this script does that.
 
 Usage:
-  tests/workspace/restore_test.py --app <path to iSH-AOK.app> [--rootfs <alpine aarch64 minirootfs tarball>]
+  tests/workspace/restore_test.py --app <path to AOK-KSH.app> [--rootfs <alpine aarch64 minirootfs tarball>]
                                   [--only arrangement|suspend] [--keep]
 
 Build the app first (see the simulator recipe in docs or the memory notes):
@@ -38,10 +38,10 @@ import sys
 import tempfile
 import time
 
-BUNDLE = "app.ish.iSH-AOK"
+BUNDLE = "app.ish.aok-ksh"
 SIM_NAME = "AOK workspace-restore-test"
 DEVICE_TYPE = "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-13-inch-M5-12GB"
-NOTIFY = "app.ish.iSH-AOK.workspace-test"
+NOTIFY = "app.ish.aok-ksh.workspace-test"
 ROOT_NAME = "wstest"
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -102,7 +102,7 @@ class Sim:
         # A simulator build carries empty entitlements; without the App Group
         # there is no root container and the guest never boots.
         with tempfile.NamedTemporaryFile("wb", suffix=".plist", delete=False) as f:
-            plistlib.dump({"com.apple.security.application-groups": ["group.app.ish.iSH-AOK"]}, f)
+            plistlib.dump({"com.apple.security.application-groups": ["group.app.ish.aok-ksh"]}, f)
             entitlements = f.name
         run("codesign", "--force", "--sign", "-", "--entitlements", entitlements, "--timestamp=none", self.app)
         os.unlink(entitlements)
@@ -110,7 +110,7 @@ class Sim:
         # One "<group id>\t<path>" line per App Group.
         group_dir = None
         for line in simctl("get_app_container", self.udid, BUNDLE, "groups").splitlines():
-            if line.startswith("group.app.ish.iSH-AOK"):
+            if line.startswith("group.app.ish.aok-ksh"):
                 group_dir = line.split("\t", 1)[-1].strip()
         if group_dir is None:
             raise RuntimeError("no group container after install")
@@ -134,7 +134,7 @@ class Sim:
                 os.unlink(os.path.join(sessions, name))
 
     def defaults(self, verb, key, *value):
-        # By the app's own plist, as a path domain: `defaults ... app.ish.iSH-AOK`
+        # By the app's own plist, as a path domain: `defaults ... app.ish.aok-ksh`
         # from simctl spawn reads and writes some other file, so a delete there
         # removed nothing and a read said every key was absent.
         domain = os.path.join(self.data_dir(), "Library", "Preferences", BUNDLE)

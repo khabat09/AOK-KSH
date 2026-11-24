@@ -68,7 +68,7 @@ static NSString *kDefaultRoot = @"Default Root";
 // A single file-provider domain hosts every installed root as a folder, instead
 // of registering one domain per root (which spammed the Files sidebar). Must
 // stay in sync with the displayName shown in Files and the deep-link path.
-static NSString *const kISHFileProviderDomainIdentifier = @"iSH-AOK";
+static NSString *const kISHFileProviderDomainIdentifier = @"app.ish.aok-ksh";
 // The identifier keeps the app's old name, so a domain registered before the
 // rename is still found as ours; only the name the Files app shows changed.
 static NSString *const kISHFileProviderDomainDisplayName = @"AOK-iSH";
@@ -1372,7 +1372,8 @@ static NSString *ISHFileProviderErrorText(NSError *error) {
             }];
         };
 
-        // Keep exactly one domain (identifier "iSH-AOK", shown as "AOK-iSH");
+        // Keep exactly one domain (identifier "app.ish.aok-ksh", shown as
+        // "AOK-iSH");
         // remove everything else, including the legacy one-domain-per-root
         // entries from older builds.
         NSFileProviderDomain *ourDomain = nil;

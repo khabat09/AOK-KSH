@@ -14,7 +14,7 @@
 # (xcodebuild -sdk iphonesimulator -destination 'generic/platform=iOS
 # Simulator'). Every worktree has its own DerivedData, so ask xcodebuild for
 # the path rather than globbing. It is copied to the host as
-# ~/ish-sim-suite/<label>/iSH-AOK.app, where <label> is the build number and
+# ~/ish-sim-suite/<label>/AOK-KSH.app, where <label> is the build number and
 # HEAD's short SHA: built HERE because the host may not be able to (a
 # Homebrew Rust has no iOS simulator target), compressed and resumable
 # because the link may be slow -- a run from away reached the MBP over a
@@ -70,7 +70,7 @@ run)
     build=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$app/Info.plist")
     label=$build-$(git rev-parse --short=9 HEAD)
     remote "mkdir -p ~/ish-sim-suite/$label"
-    rsync -az --partial --delete "$app/" "$host:ish-sim-suite/$label/iSH-AOK.app/"
+    rsync -az --partial --delete "$app/" "$host:ish-sim-suite/$label/AOK-KSH.app/"
 
     # One leg: a simulator, a root, its log. Installed on the host each run,
     # by RENAME: legs already running are bash reading this file by offset,
@@ -96,8 +96,8 @@ note "simulator $udid ($devtype, $runtime)"
 xcrun simctl boot "$udid"
 xcrun simctl bootstatus "$udid" -b > /dev/null
 xcrun simctl install "$udid" "$app"
-group=$(xcrun simctl get_app_container "$udid" app.ish.iSH-AOK groups |
-        awk -F'\t' '$1 == "group.app.ish.iSH-AOK" { print $2 }')
+group=$(xcrun simctl get_app_container "$udid" app.ish.aok-ksh groups |
+        awk -F'\t' '$1 == "group.app.ish.aok-ksh" { print $2 }')
 [ -n "$group" ] || { note "no App Group container"; exit 1; }
 mkdir -p "$group/roots"
 cp -cR "build/$root" "$group/roots/$root"
@@ -117,10 +117,10 @@ cp -cR "build/$root" "$group/roots/$root"
 #    long after boot, always waited. The pattern is init[.]d/rc so that this
 #    command line, itself a process's cmdline, does not match it.
 # No double quotes inside: the command is a string in an old-style plist.
-xcrun simctl spawn "$udid" defaults write app.ish.iSH-AOK "Init Command" \
+xcrun simctl spawn "$udid" defaults write app.ish.aok-ksh "Init Command" \
     '("/bin/sh", "-c", "cd /root; { echo start; date; grep ^booted /proc/ish/roots; id; export PATH=/AOK/persist/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin; [ -d /tmp/ish-aok-regress-cache ] && cp -a /tmp/ish-aok-regress-cache /root/.sim-regress-cache; export ISH_AOK_REGRESS_CACHE=/root/.sim-regress-cache; sleep 10; i=0; while [ $i -lt 60 ] && grep -aqs init[.]d/rc /proc/[0-9]*/cmdline; do sleep 2; i=$((i+1)); done; echo boot scripts done; date; sh /AOK/tests/setup-regressions.sh --run; echo SUITE-EXIT $?; } > /root/sim-suite.log 2>&1 < /dev/null; exec /bin/sh")'
 SIMCTL_CHILD_ISH_BOOT_ROOT=$root SIMCTL_CHILD_ISH_SESSION_RESUME=fresh \
-    xcrun simctl launch "$udid" app.ish.iSH-AOK >> "$dir/$root.leg" 2>&1
+    xcrun simctl launch "$udid" app.ish.aok-ksh >> "$dir/$root.leg" 2>&1
 note "launched"
 guest="$group/roots/$root/data/root/sim-suite.log"
 deadline=$(( $(date +%s) + 4 * 3600 ))
@@ -131,7 +131,7 @@ while [ "$(date +%s)" -lt "$deadline" ]; do
 done
 grep -q '^SUITE-EXIT' "$dir/$root.log" 2>/dev/null || note "no SUITE-EXIT after 4 hours"
 note "done"
-xcrun simctl terminate "$udid" app.ish.iSH-AOK > /dev/null 2>&1 || true
+xcrun simctl terminate "$udid" app.ish.aok-ksh > /dev/null 2>&1 || true
 xcrun simctl shutdown "$udid" > /dev/null 2>&1 || true
 LEG
 
@@ -151,7 +151,7 @@ print(max(ios, key=lambda r: [int(x) for x in r["version"].split(".")])["identif
         for r in $roots; do
             if [ ! -d build/\$r ]; then echo \"sim-suite: no build/\$r on $host, skipped\" >&2; continue; fi
             rm -f \$dir/\$r.log \$dir/\$r.leg
-            nohup bash ~/ish-sim-suite/sim-leg.sh \$dir/iSH-AOK.app \$r \$dir \"\$devtype\" \"\$runtime\" > /dev/null 2>&1 < /dev/null &
+            nohup bash ~/ish-sim-suite/sim-leg.sh \$dir/AOK-KSH.app \$r \$dir \"\$devtype\" \"\$runtime\" > /dev/null 2>&1 < /dev/null &
             sleep 5
         done
         echo \"started $label on $host: \$dir ($roots) on \$devtype, \$runtime\"
